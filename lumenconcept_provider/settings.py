@@ -117,3 +117,8 @@ STATIC_ROOT = BASE_DIR + '/static/'
 
 MEDIA_URL= '/media/'
 MEDIA_ROOT = BASE_DIR + '/media/'
+
+AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
+
+URL_BROKER = os.environ['URL_BROKER']

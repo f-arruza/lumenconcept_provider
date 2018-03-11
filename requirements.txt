@@ -10,3 +10,4 @@ django-storages
 boto==2.42.0
 django_cors_headers==2.1.0
 boto3==1.5.27
+pika==0.11.2
