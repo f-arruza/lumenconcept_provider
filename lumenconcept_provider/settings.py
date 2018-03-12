@@ -112,11 +112,25 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR + '/static/'
+# STATIC_URL = '/static/'
+# STATIC_ROOT = BASE_DIR + '/static/'
+#
+# MEDIA_URL= '/media/'
+# MEDIA_ROOT = BASE_DIR + '/media/'
 
-MEDIA_URL= '/media/'
-MEDIA_ROOT = BASE_DIR + '/media/'
+# S3 Config
+AWS_PRELOAD_METADATA = True
+AWS_STORAGE_BUCKET_NAME = 'lumenconcept-provider'
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+# Static files (javascript, css, images)
+STATICFILES_LOCATION = 'static'
+STATICFILES_STORAGE = 'lumenconcept_provider.custom_storages.StaticStorage'
+STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
+
+MEDIAFILES_LOCATION = 'media'
+DEFAULT_FILE_STORAGE = 'lumenconcept_provider.custom_storages.MediaStorage'
+MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
 
 AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
 AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
